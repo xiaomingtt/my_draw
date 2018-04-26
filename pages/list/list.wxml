@@ -1,0 +1,31 @@
+<view class='tab'>
+  <view class='tab-nav'>
+    <view class='{{current==0?"on":""}}' data-current="0" bindtap='tab'>最新作品</view>
+    <view class='{{current==1?"on":""}}' data-current="1" bindtap='tab'>最火作品</view>
+    <view class='{{current==2?"on":""}}' data-current="2" bindtap='tab'>分享榜单</view>
+  </view>
+  
+  <swiper class='tab-box' current="{{current}}" bindchange="eventchange">
+    <swiper-item>
+      <block wx:for="{{newdata}}" wx:key="{{index}}">
+        <view class="itemview">
+
+{{item.id}}
+        </view>
+      </block>
+    </swiper-item>
+    <swiper-item>
+<scroll-view scroll-y style="height:100vh;">
+      <block wx:for="{{fendata}}" wx:key="{{index}}">
+        <view class="itemview">
+
+{{item.name}}
+        </view>
+      </block>
+</scroll-view>
+    </swiper-item>
+    <swiper-item>
+
+    </swiper-item>
+  </swiper>
+</view>

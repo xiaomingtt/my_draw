@@ -1,8 +1,4 @@
-<canvas class="canvas" id="canvas" canvas-id="canvas" disable-scroll="true" bindtouchstart="canvasStart" bindtouchmove="canvasMove" bindtouchend="canvasEnd" touchcancel="canvasEnd" binderror="canvasIdErrorCallback">
-
-
-
-</canvas>
+<canvas class="canvas" id="canvas" canvas-id="canvas" disable-scroll="true" bindtouchstart="canvasStart" bindtouchmove="canvasMove" bindtouchend="canvasEnd" touchcancel="canvasEnd" binderror="canvasIdErrorCallback"></canvas>
 
 <view class="yanse">
   <block wx:for="{{colors}}" wx:key="index">
@@ -40,7 +36,7 @@
     <button size='mini' type='primary' style="width:100%;height:100%;font-size:36rpx;" bindtap='cleardraw' disabled="{{!jinshare}}">清 除</button>
   </view>
   <view class="anniu">
-    <button size='mini' type='primary' open-type="share" style="width:100%;height:100%;font-size:36rpx;" disabled="{{jinshare}}">分 享</button>
+    <button size='mini' type='primary' open-type="share" style="width:100%;height:100%;font-size:36rpx;border:none;" disabled="{{jinshare}}">分 享</button>
   </view>
 </view>
 

@@ -1,0 +1,6 @@
+{
+    "backgroundTextStyle": "dark",
+
+    "navigationBarTitleText": "我画你猜",
+    "enablePullDownRefresh": true
+}

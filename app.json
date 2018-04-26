@@ -1,7 +1,10 @@
 {
   "pages": [
+    "pages/list/list",
     "pages/index/index",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/show/show"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -9,24 +12,24 @@
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
-    "tabBar": {
-      "color": "#8d8d8d",
-      "selectedColor": "#1296db",
-      "borderStyle": "white",
-      "backgroundColor": "#fff",
-      "list": [
-        {
-          "pagePath": "pages/index/index",
-          "text": "线路",
-          "iconPath": "images/t0.png",
-          "selectedIconPath": "images/t1.png"
-        },
-        {
-          "pagePath": "pages/user/user",
-          "text": "站点",
-          "iconPath": "images/t0.png",
-          "selectedIconPath": "images/t1.png"
-        }
-      ]
-    }
+  "tabBar": {
+    "color": "#8d8d8d",
+    "selectedColor": "#1296db",
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "线路",
+        "iconPath": "images/t0.png",
+        "selectedIconPath": "images/t1.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "站点",
+        "iconPath": "images/t0.png",
+        "selectedIconPath": "images/t1.png"
+      }
+    ]
+  }
 }

@@ -23,6 +23,6 @@ App({
    
   },
   globalData: {
-    url:'https://***/wohuanicai/'
+    url:'https://kkk.gg/wohuanicai/'
   }
 })

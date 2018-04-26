@@ -1,0 +1,7 @@
+.canvas {
+  width: 99.5vw;
+  height: 60vh;
+  border: 0.1vw solid #8d8d8d;
+  background-color: #fffffe;
+  margin: 1vh 0;
+}

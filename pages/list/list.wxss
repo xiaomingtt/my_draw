@@ -1,0 +1,37 @@
+.tab-nav {
+  position: fixed;
+  z-index:99;
+  top:0;
+  left:0;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+
+.tab-nav view {
+  float: left;
+  height: 50rpx;
+  line-height: 50rpx;
+  background: #ccc;
+  width: 33.33vw;
+  font-size: 30rpx;
+  text-align: center;
+  color: #000;
+  border-bottom: 8rpx solid #ccc;
+}
+
+.tab-nav view.on {
+  color: #f00;
+  border-bottom: 8rpx solid #f00;
+}
+.tab-box{
+  height:99vh;
+  margin-top:60rpx;
+}
+.itemview{
+  width:45%;
+  height:350rpx;
+  margin:10rpx 2.5%;
+  float:left;
+background-color:#f887fa;
+
+}

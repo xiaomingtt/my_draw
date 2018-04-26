@@ -44,7 +44,7 @@ Page({
     console.error(e.detail.errMsg)
   },
   canvasStart: function (event) {
-
+    console.log(isclean)
     arrx = []
     arry = []
     if (!shengcheng) { isButtonDown = true; }
@@ -57,6 +57,12 @@ Page({
       endX: event.touches[0].x,
       endY: event.touches[0].y
     })
+    if (isclean) {
+      //橡皮
+      ctx.globalCompositeOperation = "destination-out";
+    } else {
+      ctx.globalCompositeOperation = "source-over"
+    }
 
   },
   canvasMove: function (event) {
@@ -66,12 +72,6 @@ Page({
     if (isButtonDown) {
       arrx.push(x);
       arry.push(y);
-      if (isclean) {
-        //橡皮
-        ctx.globalCompositeOperation = "destination-out";
-      } else {
-        ctx.globalCompositeOperation = "source-over"
-      }
       ctx.beginPath();
       ctx.setStrokeStyle(this.data.secai)
       ctx.setLineWidth(this.data.cuxi)
@@ -218,7 +218,7 @@ Page({
                     console.log(res)
                   }
                 })
-              }, 500)
+              }, 1000)
             }
           }
         })
@@ -267,12 +267,23 @@ Page({
     var img = this.data.shareimage
     console.log(img)
     var id = this.data.pid
+    var uid = wx.getStorageSync('uid') || '123'//用户标识
     return {
       title: '看看我的大作，谁知道我画的啥？',
-      path: '/pages/user/user?id=123',
+      path: '/pages/show/show?id='+id,
       imageUrl: img,
       success: function (res) {
-        // 转发成功
+        wx.request({
+          url: app.globalData.url + 'share.php',
+          data:{uid:uid,id:id},
+          success:function(res){
+            console.log(res.data)
+          }
+        })
+        wx.showToast({
+          title: '分享成功',
+          icon: 'success'
+        })
       },
       fail: function (res) {
         // 转发失败
@@ -318,7 +329,7 @@ Page({
   },
   xiangpi: function (e) {
     //橡皮
-    this.setData({ xuanzhongcolor: "888" })
+    this.setData({ xuanzhongcolor: "888", secai:"#fffffe" })
     isclean = true
   },
   slider4co: function (e) {
