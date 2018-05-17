@@ -1,9 +1,10 @@
+var Dec = require('../../utils/aes-public.js');//引用封装好的加密解密js
 var ctx = null
 var isButtonDown = false;//是否在绘制中
 var arrx = [];//动作横坐标
 var arry = [];//动作纵坐标
-var canvasw = 0;//画布宽度
-var canvash = 0;//画布高度
+var canvasw = 318;//画布宽度
+var canvash = 318;//画布高度
 var dijibi = 0;//复原画作的时候，记录复原的是第几笔（0开始）
 var dijidian = 0;//复原画作时，记录当前画笔的第几个点（0开始）
 var caozuo = [];//记录所有绘图操作，用于复原图像
@@ -172,6 +173,7 @@ Page({
         console.log(tempimgpath, 'canvas图片地址');
 
         var uid = wx.getStorageSync('uid') || '123'//用户标识
+        uid = Dec.Decrypt(uid)
         wx.uploadFile({
           //上传生成的图像
           url: app.globalData.url + 'upload.php',
@@ -184,22 +186,40 @@ Page({
             buzhou: JSON.stringify(caozuo)//操作步骤（Json对象转json字符串）
           },
           success: function (res) {
-            if (res.data != 'no') {
+            console.log(res.data)
+            var content = JSON.parse(res.data)
+            if (content.id != 'no') {
               //上传成功，返回记录ID
-              var photoid = res.data
-
+              var photoid = content.id
+              var userface = content.face
               that.cleardraw();//清空画板
               //将底图和原始图片draw到canvas
               ctx.drawImage('../../images/bg.jpg', 0, 0, canvasw, canvash)
               ctx.drawImage(tempimgpath, canvasw * 0.220, canvash * 0.28, canvasw * 0.556, canvash * 0.52)
-              ctx.draw(true)
+              if (userface != '') {
+                that.XiaZai(userface).then(
+                  (code) => {
+                    console.log('头像下载的本地地址',code)
+                    ctx.save()
+                    ctx.beginPath()
+                    ctx.arc(40, 40, 30, 0, 2 * Math.PI)
+                    ctx.clip()
+                    ctx.drawImage(code, 10, 10, 60, 60)
+                    ctx.restore()
+                    ctx.draw(true)
+                  }, (err) => {
+                    console.log(err)
+                  }
+                )
+              }
+              
               setTimeout(function () {
                 console.log('绘制完成')
                 wx.canvasToTempFilePath({
                   //保存分享图片到临时文件
                   canvasId: 'canvas',
                   destWidth: canvasw,
-                  destHeight: canvash,
+                  destHeight: canvasw * 0.8,
                   success: function (res) {
                     var shareimg = res.tempFilePath//分享页面图片
                     console.log(shareimg, '分享页面图片')
@@ -241,15 +261,7 @@ Page({
    */
   onLoad: function (options) {
     //画布初始化执行
-    //获取系统信息
-    wx.getSystemInfo({
-      success: function (res) {
-        canvasw = res.windowWidth * 0.995;//设备宽度
-        canvash = res.windowHeight * 0.6;
-      }
-    });
     ctx = wx.createCanvasContext('canvas')
-
   },
 
   /**
@@ -268,15 +280,16 @@ Page({
     console.log(img)
     var id = this.data.pid
     var uid = wx.getStorageSync('uid') || '123'//用户标识
+    uid = Dec.Decrypt(uid)
     return {
       title: '看看我的大作，谁知道我画的啥？',
-      path: '/pages/show/show?id='+id,
+      path: '/pages/show/show?id=' + id,
       imageUrl: img,
       success: function (res) {
         wx.request({
           url: app.globalData.url + 'share.php',
-          data:{uid:uid,id:id},
-          success:function(res){
+          data: { uid: uid, id: id },
+          success: function (res) {
             console.log(res.data)
           }
         })
@@ -329,7 +342,7 @@ Page({
   },
   xiangpi: function (e) {
     //橡皮
-    this.setData({ xuanzhongcolor: "888", secai:"#fffffe" })
+    this.setData({ xuanzhongcolor: "888", secai: "#fffffe" })
     isclean = true
   },
   slider4co: function (e) {
@@ -469,7 +482,6 @@ redraw: function (options) {
     isclean = false;//是否为清除状态（橡皮）
     shengcheng = false;//是否正在生成图像、分享等操作，期间禁止绘画
     this.setData({
-
       showcolor: false,//显示调色板
       canvasimgsrc: "",//canvas生成的图片路径
       startX: 0,
@@ -489,14 +501,21 @@ redraw: function (options) {
       shareimage: '',//分享页面显示的图片
       jinshare: true,//禁用分享按钮，只有生成以后才能分享
       isdraw: true//正在绘画，显示生成按钮
-
-
-
     })
-
+  },
+  XiaZai(u) {
+    //下载用户头像
+    return new Promise((resolve, reject) => {
+      wx.downloadFile({
+        url: u,
+        success: function (res) {
+          if (res.statusCode === 200) {
+            resolve(res.tempFilePath)
+          } else {
+            reject('下载失败')
+          }
+        }
+      })
+    })
   }
-
-
-
-
 })

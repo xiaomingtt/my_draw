@@ -1,31 +1,95 @@
-<view class='tab'>
+<view class='tab' bindtouchstart="touchStart" bindtouchend="touchEnd">
   <view class='tab-nav'>
     <view class='{{current==0?"on":""}}' data-current="0" bindtap='tab'>最新作品</view>
     <view class='{{current==1?"on":""}}' data-current="1" bindtap='tab'>最火作品</view>
     <view class='{{current==2?"on":""}}' data-current="2" bindtap='tab'>分享榜单</view>
   </view>
-  
-  <swiper class='tab-box' current="{{current}}" bindchange="eventchange">
-    <swiper-item>
-      <block wx:for="{{newdata}}" wx:key="{{index}}">
-        <view class="itemview">
 
-{{item.id}}
+  <view wx:if="{{current==0}}" class="tab-box">
+    <block wx:for="{{newdata}}" wx:key="{{index}}">
+      <view class="itemview" bindtap='goShow' data-id="{{item.id}}">
+        <view class="itemtitle">
+          <view class="itemlie">
+            <view class="itemface">
+              <image src="{{item.userface}}"></image>
+            </view>
+            <view class="itemname">{{item.username}}</view>
+          </view>
         </view>
-      </block>
-    </swiper-item>
-    <swiper-item>
-<scroll-view scroll-y style="height:100vh;">
-      <block wx:for="{{fendata}}" wx:key="{{index}}">
-        <view class="itemview">
-
-{{item.name}}
+        <view class="itemimg">
+          <image src="{{item.image}}"></image>
+          <view class="iteminfo">
+            <view class="itemrightbottom">
+              <image src="../../images/sj.png"></image>
+            </view>
+            <view class="itemybtext">
+              {{item.miao}}
+            </view>
+          </view>
         </view>
-      </block>
-</scroll-view>
-    </swiper-item>
-    <swiper-item>
+      </view>
+    </block>
+    <view class="nomoreview" wx:if="{{nending}}">
+      没有更多内容了
+    </view>
+  </view>
 
-    </swiper-item>
-  </swiper>
+  <view wx:if="{{current==1}}" class="tab-box">
+    <block wx:for="{{hotdata}}" wx:key="{{index}}">
+      <view class="itemview" bindtap='goShow' data-id="{{item.id}}">
+        <view class="itemtitle">
+          <view class="itemlie">
+            <view class="itemface">
+              <image src="{{item.userface}}"></image>
+            </view>
+            <view class="itemname">{{item.username}}</view>
+          </view>
+        </view>
+        <view class="itemimg">
+          <image src="{{item.image}}"></image>
+          <view class="iteminfo">
+            <view class="itemrightbottom">
+              <image src="../../images/hd.png"></image>
+            </view>
+            <view class="itemybtext">
+              {{item.bofang}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{hending}}" class="nomoreview">
+      没有更多内容了
+    </view>
+  </view>
+
+  <view wx:if="{{current==2}}" class="tab-box">
+    <block wx:for="{{fendata}}" wx:key="{{index}}">
+      <view class="itemview" bindtap='goShow' data-id="{{item.id}}">
+        <view class="itemtitle">
+          <view class="itemlie">
+            <view class="itemface">
+              <image src="{{item.userface}}"></image>
+            </view>
+            <view class="itemname">{{item.username}}</view>
+          </view>
+        </view>
+        <view class="itemimg">
+          <image src="{{item.image}}"></image>
+          <view class="iteminfo">
+            <view class="itemrightbottom">
+              <image src="../../images/fx.png"></image>
+            </view>
+            <view class="itemybtext">
+              {{item.fenxiang}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view wx:if="{{fending}}" class="nomoreview">
+      没有更多内容了
+    </view>
+  </view>
+
 </view>

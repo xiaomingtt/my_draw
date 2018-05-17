@@ -1,3 +1,53 @@
-<canvas class="canvas" id="canvas" canvas-id="canvas" disable-scroll="true" bindtouchstart="canvasStart" bindtouchmove="canvasMove" bindtouchend="canvasEnd" touchcancel="canvasEnd" binderror="canvasIdErrorCallback"></canvas>
+<view class="showhead">
+  <view class="showheadttle">用时：
+    <text class='{{over?"jieshu":"jinxing"}}'>{{t}}秒</text> （
+    <image src="../../images/heart.png"></image>+{{over?"5":"10"}}）
+  </view>
+  <view class="showheadttle showright">
+    <image src="../../images/heart.png"></image>×{{jifen}}</view>
+</view>
 
+<canvas class="canvas" id="canvas" canvas-id="canvas" disable-scroll="true"></canvas>
 
+<view class="showinput">
+  <input adjust-position="false" placeholder="请输入答案。{{titlelength}}个字" bindinput='changedaan' value="{{daan}}"></input>
+  <view class="showtijiaoanniu" bindtap='Tijiao'>提交
+    <image src="../../images/heart.png"></image>-2
+  </view>
+</view>
+<view class="showinput">
+  <view class="showtishianniu" bindtap='showtishi'>
+    猜不到?看提示!
+    <image src="../../images/heart.png"></image>
+    -5
+  </view>
+  <view class="showtishiinfo">
+    <text wx:if="{{stishi}}">{{tishi}}</text>
+  </view>
+</view>
+<view class="showinput">
+  <view class="morebutton" bindtap='gotolist'>更多</view>
+  <view class="fxbtnview">
+    <button open-type="share" class="showfxanniu" type='primary'>{{fxinfo}}(
+      <image src="../../images/heart.png"></image>+5)</button>
+  </view>
+  <view class="showjbanniu" bindtap='jubao'>举报</view>
+</view>
+<view>
+  <view class="title">回答记录
+    <text wx:if="{{zhengque==1}}">（已正确作答）</text>
+  </view>
+  <block wx:for="{{jilu}}" wx:key="{{index}}">
+    <view class="showhuidajilu">{{item}}</view>
+  </block>
+</view>
+
+<view class="showjbview" wx:if="{{showjb}}">
+  <view class="showjbtitle">请选择举报类型</view>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <label class="radio" wx:for="{{items}}" wx:key="{{index}}">
+      <radio value="{{item.name}}" checked="{{item.checked}}" />{{item.value}}
+    </label>
+  </radio-group>
+  <button class="showqdjbanniu" bindtap='qdjubao' size="mini">确定举报</button>
+</view>

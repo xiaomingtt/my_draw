@@ -1,7 +1,177 @@
+.showhead {
+  width: 100%;
+  height: 6vh;
+  background-color: #1296db;
+  font-size: 40rpx;
+  line-height: 5vh;
+}
+
+.showheadttle {
+  float: left;
+  height: 5vh;
+  margin: 0.5vh 10rpx;
+}
+
+.showright {
+  float: right;
+}
+
+.showheadttle image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
 .canvas {
-  width: 99.5vw;
-  height: 60vh;
-  border: 0.1vw solid #8d8d8d;
+  width: 318px;
+  height: 318px;
+  border: 1rpx solid #1296db;
   background-color: #fffffe;
-  margin: 1vh 0;
+  margin: 1vh auto;
+}
+
+.jieshu {
+  color: #f00;
+}
+
+.jinxing {
+  color: #0f0;
+}
+
+.radio radio {
+  width: 16vw;
+  margin: 8rpx 0.5vw;
+  text-align: center;
+  color: #999;
+}
+
+.showinput {
+  width: 100%;
+  height: 8vh;
+  font-size: 36rpx;
+  clear: both;
+}
+
+.showinput input {
+  border: 1rpx solid #1296db;
+  width: 68%;
+  height: 6vh;
+  float: left;
+  border-radius: 10rpx;
+  margin: 1vh 1%;
+}
+
+.showtijiaoanniu {
+  width: 25%;
+  height: 6vh;
+  line-height: 6vh;
+  float: right;
+  border: 1rpx solid #aaa;
+  border-radius: 10rpx;
+  margin: 1vh 1%;
+  background-color: #1aad19;
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+}
+
+.showinput image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.showtishianniu {
+  line-height: 6vh;
+  margin: 1vh 5rpx;
+  float: left;
+  border: solid 2rpx #1296db;
+  border-radius: 10rpx;
+  width: 48%;
+  text-align: center;
+  color: #808080;
+}
+
+.showtishiinfo {
+  height: 6vh;
+  text-align: center;
+  width: 48%;
+  border-bottom: 1rpx solid #1296db;
+  float: right;
+  line-height: 6vh;
+  margin: 1vh 5rpx;
+}
+
+.showjbview {
+  position: fixed;
+  left: 5vw;
+  top: calc(12vh + 312px);
+  height: 25vh;
+  width: 90vw;
+  background-color: #ccc;
+  z-index: 999;
+  border-radius: 3vh;
+}
+
+.showjbtitle {
+  width: 100%;
+  margin-top: 10rpx;
+  text-align: center;
+}
+
+.showqdjbanniu {
+  margin: 10rpx 29vw;
+  width: 30vw;
+}
+
+.showhuidajilu {
+  width: 94%;
+  height: 56rpx;
+  line-height: 48rpx;
+  margin: 3rpx 3%;
+  color: #898989;
+}
+
+.morebutton {
+  line-height: 6vh;
+  float: left;
+  margin: 10rpx 5rpx;
+  width: 15%;
+  height: 6vh;
+  font-size: 36rpx;
+  border: solid 2rpx #1296db;
+  border-radius: 10rpx;
+   color: #808080;
+  text-align: center;
+}
+
+.fxbtnview {
+  float: left;
+  width: 50%;
+  height: 6vh;
+  margin-left:3%;
+}
+
+.showfxanniu {
+  line-height: 6vh;
+  margin: 10rpx auto;
+  width: 100%;
+  height: 6vh;
+  font-size: 36rpx;
+}
+
+.showjbanniu {
+  line-height: 6vh;
+  font-size: 36rpx;
+  float: right;
+  margin: 10rpx;
+  width: 25%;
+  height: 6vh;
+  background-color: #e64340;
+  color: #fff;
+  text-align: center;
+  border-radius: 12rpx;
+}
+
+.showfxanniu image {
+  width: 30rpx;
+  height: 30rpx;
 }

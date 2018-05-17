@@ -1,2 +1,118 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<view class="userheadlogin" wx:if="{{!islogin}}">
+  <view>
+    <button type='primary' open-type='getUserInfo' bindgetuserinfo="getuserinfo">登录
+    </button>
+  </view>
+</view>
+<view class="userheadlogin" wx:if="{{islogin}}">
+  <view>
+    <view class="userheadface">
+      <image src="{{userface}}"></image>
+    </view>
+    <view class="userheadname">
+      <view class="userheadnametext"> {{username}}</view>
+      <view class="userheadnameimg">
+        <image src="../../images/heart.png"></image>×{{jifen}}
+      </view>
+    </view>
+  </view>
+</view>
+<button wx:if="{{islogin}}" open-type='getUserInfo' bindgetuserinfo="getuserinfo" size="mini" class="usershuaxin">
+  <image src="../../images/1.png"></image>
+</button>
+<view>
+  <view class="title" bindtap='showuserinfo' data-id='0'>
+    <text>我的作品</text>
+    <text class="jiantou" wx:if="{{current!=0}}">∨</text>
+    <text class="jiantou" wx:if="{{current==0}}">∧</text>
+  </view>
+  <view wx:if="{{!islogin&&current==0}}" class="userweidenglu">
+    请先登录
+  </view>
+  <view wx:if="{{islogin&&current==0}}" class="userviews">
+    <scroll-view class="userscrollview" scroll-y>
+      <block wx:for="{{myzuopin}}" wx:key="{{index}}">
+        <view class="useranswer" data-id="{{item.id}}" bindtap="bindzp">
+          <view class="usermyimg">
+            <image src="{{item.img}}"></image>
+          </view>
+          <view class="usermytext">
+            {{item.name}}
+            <image src="../../images/hd.png"></image>
+            {{item.bf}}
+            <image src="../../images/fx.png"></image>
+            {{item.fx}}
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class="title" bindtap='showuserinfo' data-id='1'>
+    <text>我的回答</text>
+    <text class="jiantou" wx:if="{{current!=1}}">∨</text>
+    <text class="jiantou" wx:if="{{current==1}}">∧</text>
+  </view>
+  <view wx:if="{{!islogin&&current==1}}" class="userweidenglu">
+    请先登录
+  </view>
+  <view wx:if="{{islogin&&current==1}}" class="userviews">
+    <scroll-view class="userscrollview" scroll-y>
+      <block wx:for="{{myanswer}}" wx:key="{{index}}">
+        <view class="useranswer" data-id="{{item.id}}" bindtap='bindhd'>
+          <view class="usermyimg">
+            <image src="{{item.img}}"></image>
+          </view>
+          <view class="usermytext">
+            <text wx:if="{{item.zq==1}}">{{item.name}}</text>
+            <text wx:if="{{item.zq==0}}">未答对</text>
+            <image src="../../images/sj.png"></image>
+            {{item.ys}}
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class="title" bindtap='showuserinfo' data-id='2'>
+    <text>我的分享</text>
+    <text class="jiantou" wx:if="{{current!=2}}">∨</text>
+    <text class="jiantou" wx:if="{{current==2}}">∧</text>
+  </view>
+  <view wx:if="{{!islogin&&current==2}}" class="userweidenglu">
+    请先登录
+  </view>
+  <view wx:if="{{islogin&&current==2}}" class="userviews">
+    <scroll-view class="userscrollview" scroll-y>
+      <block wx:for="{{myshare}}" wx:key="{{index}}">
+        <view class="useranswer" data-id="{{item.id}}" bindtap='bindfx'>
+          <view class="usermyimg">
+            <image src="{{item.img}}"></image>
+          </view>
+          <view class="usermytext">
+            <text wx:if="{{item.zq==1}}">{{item.name}}</text>
+            <text wx:if="{{item.zq!=1}}">未答对</text>
+            <image src="../../images/sj.png"></image>
+            {{item.sj}}
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <view class="title" bindtap='showuserinfo' data-id='3'>
+    <text>我的举报</text>
+    <text class="jiantou" wx:if="{{current!=3}}">∨</text>
+    <text class="jiantou" wx:if="{{current==3}}">∧</text>
+  </view>
+  <view wx:if="{{!islogin&&current==3}}" class="userweidenglu">
+    请先登录
+  </view>
+  <view wx:if="{{islogin&&current==3}}" class="userviews">
+    <scroll-view class="userscrollview" scroll-y>
+      <block wx:for="{{myjubao}}" wx:key="{{index}}">
+        <view class="userweifa">
+        作品ID：{{item.id}} 违规类型：{{item.lx}} 处理结果：{{item.jg}}
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+

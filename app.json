@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/list/list",
-    "pages/index/index",
+    "pages/myshow/myshow",
     "pages/user/user",
+    "pages/index/index",
     "pages/show/show"
-    
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -20,15 +20,21 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "线路",
-        "iconPath": "images/t0.png",
-        "selectedIconPath": "images/t1.png"
+        "text": "我画",
+        "iconPath": "images/h0.png",
+        "selectedIconPath": "images/h1.png"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "我猜",
+        "iconPath": "images/d0.png",
+        "selectedIconPath": "images/d1.png"
       },
       {
         "pagePath": "pages/user/user",
-        "text": "站点",
-        "iconPath": "images/t0.png",
-        "selectedIconPath": "images/t1.png"
+        "text": "我的",
+        "iconPath": "images/u0.png",
+        "selectedIconPath": "images/u1.png"
       }
     ]
   }

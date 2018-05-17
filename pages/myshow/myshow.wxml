@@ -1,0 +1,49 @@
+<canvas class="canvas" id="canvas" canvas-id="canvas" disable-scroll="true"></canvas>
+<view class="myshowxinxi">
+  <view>
+    <view class="myshowxxtt xx">作品名称：{{title}}</view>
+  </view>
+  <view style="clear:both;">
+    <view class="myshowxxtt xx">提示信息：{{tishi}}</view>
+  </view>
+</view>
+
+<view class="myshowinfo">
+  <view>
+    <view class="myshowxxtt info">展示次数：{{bofangcishu}}</view>
+    <view class="myshowxxtt info">分享次数：{{fenxiangcishu}}</view>
+  </view>
+  <view style="clear:both;">
+    <view class="myshowxxtt info">参与人数：{{canyurenshu}}</view>
+    <view class="myshowxxtt info">是否违规：{{weigui==1?'是':'否'}}</view>
+  </view>
+</view>
+<view class="myshowuser" wx:if="{{canyurenshu>0}}">
+  <block wx:for="{{huida}}" wx:key="{{index}}">
+    <view class="userlist">
+      <view class="headname">
+        <view class="headleft">
+          <image src="{{item.userface}}"></image>
+        </view>
+        <view class="username">
+          <text>{{item.username}}</text>
+        </view>
+      </view>
+      <view class="datiinfo">
+        <view>
+          <view class="myshowxxtt info">正确作答：{{item.zq==1?'是':'否'}}</view>
+          <view class="myshowxxtt info">查看提示：{{item.kts==1?'是':'否'}}</view>
+        </view>
+        <view style="">
+          <view class="myshowxxtt info" wx:if="{{item.zq==1}}">
+            答对用时：{{item.ys}}秒
+          </view>
+        </view>
+      </view>
+      <view class="huidajilu">
+      答题记录：{{item.jl}}
+      </view>
+
+    </view>
+  </block>
+</view>

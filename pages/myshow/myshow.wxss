@@ -1,0 +1,82 @@
+.canvas {
+  width: 318px;
+  height: 318px;
+  border: 1rpx solid #1296db;
+  background-color: #fffffe;
+  margin: 1vh auto;
+}
+
+.myshowxinxi {
+  width: 100vw;
+  height: 8vh;
+}
+
+.myshowxxtt {
+  float: left;
+  font-size: 34rpx;
+  margin-left: 10rpx;
+  line-height: 4vh;
+  border-bottom: 1rpx solid #1296db;
+}
+
+.myshowinfo {
+  width: 100vw;
+  height: 8vh;
+  margin-top: 1vh;
+}
+
+.info {
+  width: 48%;
+}
+
+.xx {
+  width: 97%;
+}
+
+.userlist {
+  width: 98vw;
+  height: calc(60rpx + 22vh);
+  margin: 1vh 1vw;
+  border: 1rpx solid #1296db;
+  border-radius: 20rpx;
+}
+
+.headname image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.headname {
+  width: 96%;
+  height: 60rpx;
+  margin: 10rpx 2%;
+}
+
+.headleft {
+  float: left;
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 20rpx;
+}
+
+.username {
+  float: left;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.myshowuser {
+  margin-top: 2vh;
+}
+
+.huidajilu {
+  width: 98%;
+  height: 12vh;
+  line-height: 4vh;
+  clear: both;
+  margin: 1vh 1%;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}

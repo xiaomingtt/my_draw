@@ -3,3 +3,10 @@
   height: 0;
   color: transparent;
 }
+.title {
+  border-bottom: #1296db solid 1rpx;
+  margin: 30rpx 10rpx;
+  color: #888;
+  font-size: 42rpx;
+  clear: both;
+}
